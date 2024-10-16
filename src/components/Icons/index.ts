@@ -7,6 +7,7 @@ export { default as IconMenu } from './IconMenu.vue';
 export { default as IconMessage } from './IconMessage.vue';
 export { default as IconNote2 } from './IconNote2.vue';
 export { default as IconNotification } from './IconNotification.vue';
+export { default as IconSearch } from './IconSearch.vue';
 export { default as IconSettings } from './IconSettings.vue';
 export { default as IconStar1 } from './IconStar1.vue';
 export { default as IconTimeCircle } from './IconTimeCircle.vue';

@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/carousel';
 import { MentorCard } from '@/components/MentorCard';
 import ActivityLineChart from './components/ActivityLineChart.vue';
+import WeeklyCalendarCard from './components/WeeklyCalendarCard.vue';
 import RunningTaskCard from './components/RunningTaskCard.vue';
 import { mentorsData, tasksData } from './data';
 import { TaskCard } from '@/components/TaskCard';
@@ -18,7 +19,7 @@ const tasks = tasksData;
 </script>
 
 <template>
-  <div class="h-full lg:grid lg:grid-cols-[auto_436px]">
+  <div class="h-full lg:grid 2xl:grid-cols-[auto_436px]">
     <div>
       <SiteHeader>
         <template #title>
@@ -82,6 +83,26 @@ const tasks = tasksData;
         </section>
       </div>
     </div>
-    <div class="h-full bg-muted"></div>
+
+    <div class="h-full bg-muted">
+      <div class="space-y-8 p-8">
+        <WeeklyCalendarCard />
+        <TaskCard
+          :with-details="true"
+          :task="{
+            id: 1,
+            title: 'Task 1',
+            direction: 'Frontend Developer',
+            progress: 60,
+            duration: '2h 30m',
+            image:
+              'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80',
+            createdAt: '2022-01-01',
+            assignedTo: [],
+            details: ['Task 1', 'Task 2', 'Task 3'],
+          }"
+        />
+      </div>
+    </div>
   </div>
 </template>

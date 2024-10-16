@@ -10,4 +10,5 @@ export interface Task {
   createdAt: string;
   duration: string;
   assignedTo: Student[];
+  details: string[];
 }

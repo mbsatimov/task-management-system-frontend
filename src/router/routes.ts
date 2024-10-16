@@ -5,7 +5,7 @@ export const routes = [
   },
   {
     path: '/task',
-    component: () => import('@/views/TaskView.vue'),
+    component: () => import('@/views/Task/TaskView.vue'),
   },
   {
     path: '/mentors',

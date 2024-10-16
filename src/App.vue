@@ -4,9 +4,9 @@ import { SiteSidebar } from '@/components/SiteSidebar';
 </script>
 
 <template>
-  <div class="h-screen overflow-hidden lg:flex">
+  <div class="h-screen lg:flex">
     <SiteSidebar />
-    <main class="flex-1 overflow-y-auto bg-[#FAFAFA]">
+    <main class="overflow-y-auto bg-[#FAFAFA] lg:flex-1">
       <RouterView />
     </main>
   </div>

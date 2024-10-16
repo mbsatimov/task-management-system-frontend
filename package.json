@@ -19,6 +19,7 @@
     "@vueuse/core": "^11.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "embla-carousel-vue": "^8.3.0",
     "lucide-vue-next": "^0.451.0",
     "pinia": "^2.2.4",

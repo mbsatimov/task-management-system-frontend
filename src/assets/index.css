@@ -21,6 +21,6 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-medium text-foreground;
   }
 }

@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { CircleProgress } from '@/components/ui/circle-progress';
 </script>
 
 <template>
   <Card class="bg-secondary text-secondary-foreground">
-    <CardHeader>
-      <CardTitle>Running Task</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <p class="text-[32px] font-semibold">65</p>
+    <CardContent class="flex flex-row justify-between p-5 md:flex-col md:p-6">
+      <div>
+        <CardTitle>Running Task</CardTitle>
+        <p class="text-[32px] font-semibold">65</p>
+      </div>
       <div class="mt-4 flex items-center gap-[18px]">
         <CircleProgress :progress="45" />
         <div class="mr-3">
