@@ -1,0 +1,13 @@
+export { default as IconArrowDown } from './IconArrowDown.vue';
+export { default as IconArrowLeft } from './IconArrowLeft.vue';
+export { default as IconArrowRight } from './IconArrowRight.vue';
+export { default as IconBook } from './IconBook.vue';
+export { default as IconCategory2 } from './IconCategory2.vue';
+export { default as IconMenu } from './IconMenu.vue';
+export { default as IconMessage } from './IconMessage.vue';
+export { default as IconNote2 } from './IconNote2.vue';
+export { default as IconNotification } from './IconNotification.vue';
+export { default as IconSettings } from './IconSettings.vue';
+export { default as IconStar1 } from './IconStar1.vue';
+export { default as IconTimeCircle } from './IconTimeCircle.vue';
+export { default as IconUserOctagon } from './IconUserOctagon.vue';
