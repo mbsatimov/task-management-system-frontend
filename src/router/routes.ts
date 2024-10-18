@@ -8,6 +8,10 @@ export const routes = [
     component: () => import('@/views/Task/TaskView.vue'),
   },
   {
+    path: '/task/:id',
+    component: () => import('@/views/TaskDetail/TaskDetailView.vue'),
+  },
+  {
     path: '/mentors',
     component: () => import('@/views/MentorsView.vue'),
   },

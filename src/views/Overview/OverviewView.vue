@@ -30,7 +30,7 @@ const tasks = tasksData;
         </template>
       </SiteHeader>
 
-      <div class="space-y-8 p-8">
+      <div class="space-y-8 p-6 md:p-8">
         <div class="flex flex-col gap-8 md:flex-row">
           <RunningTaskCard />
           <ActivityLineChart />
@@ -85,7 +85,7 @@ const tasks = tasksData;
     </div>
 
     <div class="h-full bg-muted">
-      <div class="space-y-8 p-8">
+      <div class="space-y-8 p-6 md:p-8">
         <WeeklyCalendarCard />
         <TaskCard
           :with-details="true"

@@ -26,14 +26,16 @@ const { task } = withDefaults(
 
 <template>
   <Card>
-    <CardHeader>
-      <img
-        class="aspect-[5/2] rounded-md object-cover"
-        :src="task.image"
-        :alt="task.title"
-      />
-      <CardTitle class="mt-4">{{ task.title }}</CardTitle>
-      <CardDescription>{{ task.direction }}</CardDescription>
+    <CardHeader class="!pb-4">
+      <RouterLink :to="`/task/${task.id}`">
+        <img
+          class="aspect-[5/2] rounded-md object-cover"
+          :src="task.image"
+          :alt="task.title"
+        />
+        <CardTitle class="mt-4">{{ task.title }}</CardTitle>
+        <CardDescription>{{ task.direction }}</CardDescription>
+      </RouterLink>
     </CardHeader>
     <CardContent>
       <div class="space-y-2">
@@ -45,7 +47,7 @@ const { task } = withDefaults(
       </div>
       <div class="mt-4 flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <IconTimeCircle />{{ task.duration }}
+          <IconTimeCircle class="text-secondary-400" />{{ task.duration }}
         </div>
         <div
           class="relative h-6"

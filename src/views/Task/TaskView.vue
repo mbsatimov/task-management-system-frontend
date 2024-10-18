@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import { SiteHeader } from '@/components/SiteHeader';
-import { SearchInput } from '@/components/SearchInput';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselItem,
+} from '@/components/ui/carousel';
+import { TaskCard } from '@/components/TaskCard';
+import TaskFilters from './components/TaskFilters.vue';
+import { tasksData } from './data';
+
+const tasks = tasksData;
 </script>
 
 <template>
@@ -10,8 +21,53 @@ import { SearchInput } from '@/components/SearchInput';
     </template>
 
     <template #actions>
-      <SearchInput placeholder="Search Task" />
+      <TaskFilters />
     </template>
   </SiteHeader>
-  <main>task</main>
+  <div class="space-y-8 p-6 md:p-8">
+    <section>
+      <Carousel>
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="text-xl font-semibold lg:text-2xl">Time Limit</h2>
+          <div class="flex gap-4">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
+        </div>
+        <div class="mt-5">
+          <CarouselContent>
+            <CarouselItem
+              class="max-w-[328px]"
+              v-for="task in tasks"
+              :key="task.id"
+            >
+              <TaskCard :task="task" />
+            </CarouselItem>
+          </CarouselContent>
+        </div>
+      </Carousel>
+    </section>
+    <section>
+      <Carousel>
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="text-xl font-semibold lg:text-2xl">New Task</h2>
+          <div class="flex gap-4">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
+        </div>
+        <div class="mt-5">
+          <CarouselContent>
+            <CarouselItem
+              class="max-w-[328px]"
+              v-for="task in tasks"
+              :key="task.id"
+            >
+              <TaskCard :task="task" />
+            </CarouselItem>
+          </CarouselContent>
+        </div>
+      </Carousel>
+    </section>
+  </div>
 </template>
