@@ -42,7 +42,11 @@ const { mentor, withAbout } = withDefaults(
         >+Follow</Button
       >
     </CardHeader>
-    <CardContent v-if="withAbout">{{ mentor.about }}</CardContent>
+    <CardContent v-if="withAbout">
+      <p class="line-clamp-2 text-sm leading-7 text-secondary-300">
+        {{ mentor.about }}
+      </p>
+    </CardContent>
     <CardFooter class="justify-between">
       <div class="flex items-center gap-2 text-sm font-medium">
         <IconNote2 class="text-secondary-400" />

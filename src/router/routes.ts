@@ -13,7 +13,7 @@ export const routes = [
   },
   {
     path: '/mentors',
-    component: () => import('@/views/MentorsView.vue'),
+    component: () => import('@/views/Mentors/MentorsView.vue'),
   },
   {
     path: '/messages',

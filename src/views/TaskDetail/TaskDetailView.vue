@@ -33,7 +33,7 @@ console.log(file.value);
     </template>
   </SiteHeader>
   <div
-    class="grid items-start gap-6 p-6 md:gap-8 md:p-8 xl:grid-cols-[auto_372px]"
+    class="grid items-start gap-6 overflow-y-auto p-6 md:gap-8 md:p-8 xl:grid-cols-[auto_372px]"
   >
     <Card>
       <div class="overflow-hidden rounded-md">

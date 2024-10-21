@@ -19,7 +19,7 @@ const tasks = tasksData;
 </script>
 
 <template>
-  <div class="h-full lg:grid 2xl:grid-cols-[auto_436px]">
+  <div class="h-full 2xl:mr-[436px]">
     <div>
       <SiteHeader>
         <template #title>
@@ -84,7 +84,7 @@ const tasks = tasksData;
       </div>
     </div>
 
-    <div class="h-full bg-muted">
+    <div class="right-4 top-0 h-full bg-muted 2xl:fixed 2xl:w-[436px]">
       <div class="space-y-8 p-6 md:p-8">
         <WeeklyCalendarCard />
         <TaskCard
