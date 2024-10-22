@@ -17,7 +17,7 @@ export const routes = [
   },
   {
     path: '/messages',
-    component: () => import('@/views/MessagesView.vue'),
+    component: () => import('@/views/Messages/MessagesView.vue'),
   },
   {
     path: '/settings',

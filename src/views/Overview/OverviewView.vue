@@ -19,8 +19,8 @@ const tasks = tasksData;
 </script>
 
 <template>
-  <div class="h-full 2xl:mr-[436px]">
-    <div>
+  <div class="2xl:flex">
+    <div class="flex-1 overflow-hidden">
       <SiteHeader>
         <template #title>
           <h1 class="text-2xl font-semibold">Hi, Dennis Nzioki</h1>
@@ -84,7 +84,7 @@ const tasks = tasksData;
       </div>
     </div>
 
-    <div class="right-4 top-0 h-full bg-muted 2xl:fixed 2xl:w-[436px]">
+    <div class="sticky top-0 bg-muted 2xl:w-[436px]">
       <div class="space-y-8 p-6 md:p-8">
         <WeeklyCalendarCard />
         <TaskCard

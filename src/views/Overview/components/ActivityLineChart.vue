@@ -38,7 +38,7 @@ const data = [
 </script>
 
 <template>
-  <div class="flex-1 rounded-md bg-muted p-5">
+  <div class="flex-1 overflow-hidden rounded-md bg-muted p-5">
     <div class="mb-5 flex justify-between">
       <h3 class="text-base font-semibold">Activity</h3>
       <Select>

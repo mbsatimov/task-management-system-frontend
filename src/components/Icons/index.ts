@@ -3,6 +3,7 @@ export { default as IconArrowLeft } from './IconArrowLeft.vue';
 export { default as IconArrowRight } from './IconArrowRight.vue';
 export { default as IconBook } from './IconBook.vue';
 export { default as IconCategory2 } from './IconCategory2.vue';
+export { default as IconDoneAll } from './IconDoneAll.vue';
 export { default as IconElement1 } from './IconElement1.vue';
 export { default as IconFolderOpen } from './IconFolderOpen.vue';
 export { default as IconMaximize3 } from './IconMaximize3.vue';
