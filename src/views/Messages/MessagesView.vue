@@ -10,8 +10,8 @@ import ChatDetails from './components/ChatDetails.vue';
       <h1 class="text-2xl font-semibold">Messages</h1>
     </template>
   </SiteHeader>
-  <div class="relative flex h-[calc(100vh-172px)] md:h-[calc(100svh-116px)]">
+  <div class="relative flex h-[calc(100vh-173px)] md:h-[calc(100svh-117px)]">
     <ChatList />
-    <ChatDetails />
+    <ChatDetails v-if="$route.query.chat" />
   </div>
 </template>
