@@ -9,3 +9,8 @@ export interface Mentor {
   rating: number;
   about: string;
 }
+
+export type MentorRequest = Omit<Mentor, 'id'>;
+
+export type MentorResponse = Mentor;
+export type MentorsResponse = Mentor[];

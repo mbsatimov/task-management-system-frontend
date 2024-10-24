@@ -14,6 +14,8 @@ export { default as IconNote2 } from './IconNote2.vue';
 export { default as IconNotification } from './IconNotification.vue';
 export { default as IconPause } from './IconPause.vue';
 export { default as IconPlay } from './IconPlay.vue';
+export { default as IconGallery } from './IconGallery.vue';
+export { default as IconProfile } from './IconProfile.vue';
 export { default as IconProfile2 } from './IconProfile2.vue';
 export { default as IconScreenMirroring } from './IconScreenMirroring.vue';
 export { default as IconSearch } from './IconSearch.vue';

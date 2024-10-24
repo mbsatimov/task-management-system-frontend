@@ -12,3 +12,8 @@ export interface Task {
   assignedTo: Student[];
   details: string[];
 }
+
+export type TaskRequest = Omit<Task, 'id'>;
+
+export type TaskResponse = Task;
+export type TasksResponse = Task[];

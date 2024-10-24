@@ -12,15 +12,10 @@ import {
 import type { Mentor } from '@/types/models/mentor';
 import { IconNote2, IconStar1 } from '@/components/Icons';
 
-const { mentor, withAbout } = withDefaults(
-  defineProps<{
-    mentor: Mentor;
-    withAbout?: boolean;
-  }>(),
-  {
-    withAbout: false,
-  }
-);
+const { mentor, withAbout } = defineProps<{
+  mentor: Mentor;
+  withAbout?: boolean;
+}>();
 </script>
 
 <template>

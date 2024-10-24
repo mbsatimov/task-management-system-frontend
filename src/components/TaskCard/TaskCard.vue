@@ -13,15 +13,10 @@ import { Progress } from '@/components/ui/progress';
 import { Separator } from '@/components/ui/separator';
 import type { Task } from '@/types/models/task';
 
-const { task } = withDefaults(
-  defineProps<{
-    task: Task;
-    withDetails?: boolean;
-  }>(),
-  {
-    withDetails: false,
-  }
-);
+const { task } = defineProps<{
+  task: Task;
+  withDetails?: boolean;
+}>();
 </script>
 
 <template>

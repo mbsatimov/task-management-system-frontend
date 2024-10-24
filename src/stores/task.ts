@@ -1,45 +1,46 @@
-import { MentorService } from '@/api/requests/mentor';
-import type { Mentor, MentorRequest } from '@/types/models/mentor';
+import { TaskService } from '@/api/requests/task';
+import type { Task, TaskRequest } from '@/types/models/task';
 import type { Pagination } from '@/types/models/pagination';
 import { defineStore } from 'pinia';
 
 type State = {
   isSubmitting: boolean;
   isLoading: boolean;
-  mentors: Mentor[] | null;
+  tasks: Task[] | null;
   pagination: Pagination | null;
-  currentMentor: Nullable<Mentor>;
+  currentTask: Nullable<Task>;
   validationErrors: string[] | null;
 };
 
-export const useMentorStore = defineStore({
-  id: 'mentor',
+export const useTaskStore = defineStore({
+  id: 'task',
   state: (): State => ({
     isSubmitting: false,
     isLoading: false,
-    mentors: null,
+    tasks: null,
     pagination: null,
-    currentMentor: {
+    currentTask: {
       id: null,
-      about: null,
-      tasks: null,
-      avatar: null,
-      rating: null,
-      reviews: null,
-      jobTitle: null,
-      lastName: null,
-      firstName: null,
+      title: null,
+      progress: null,
+      image: null,
+      details: null,
+      duration: null,
+      createdAt: null,
+      direction: null,
+      assignedTo: null,
+      description: null,
     },
     validationErrors: null,
   }),
   getters: {},
   actions: {
-    async getMentors(params?: AxiosRequestConfig) {
+    async getTasks(params?: AxiosRequestConfig) {
       this.isLoading = true;
-      await MentorService.getMentors(params)
+      await TaskService.getTasks(params)
         .then(({ data }) => {
           setTimeout(() => {
-            this.mentors = data.data;
+            this.tasks = data.data;
             this.pagination = data.meta;
             this.isLoading = false;
           }, 2000);
@@ -50,12 +51,14 @@ export const useMentorStore = defineStore({
         });
     },
 
-    async getMentor(id: number, requestConfig?: AxiosRequestConfig) {
+    async getTask(id: number, requestConfig?: AxiosRequestConfig) {
       this.isLoading = true;
-      await MentorService.getMentor({ id, config: requestConfig?.config })
+      await TaskService.getTask({ id, config: requestConfig?.config })
         .then(({ data }) => {
-          this.currentMentor = data.data;
-          this.isLoading = false;
+          setTimeout(() => {
+            this.currentTask = data.data;
+            this.isLoading = false;
+          }, 2000);
         })
         .catch(error => {
           this.validationErrors = error.response.data.errors;
@@ -63,28 +66,26 @@ export const useMentorStore = defineStore({
         });
     },
 
-    async postMentor(
-      mentor: MentorRequest,
-      requestConfig?: AxiosRequestConfig
-    ) {
+    async postTask(task: TaskRequest, requestConfig?: AxiosRequestConfig) {
       this.isSubmitting = true;
       this.validationErrors = null;
-      await MentorService.postMentor({
-        data: mentor,
+      await TaskService.postTask({
+        data: task,
         config: requestConfig?.config,
       })
         .then(() => {
           this.isSubmitting = false;
-          this.currentMentor = {
+          this.currentTask = {
             id: null,
-            lastName: null,
-            firstName: null,
-            about: null,
-            tasks: null,
-            avatar: null,
-            rating: null,
-            reviews: null,
-            jobTitle: null,
+            title: null,
+            progress: null,
+            image: null,
+            details: null,
+            duration: null,
+            createdAt: null,
+            direction: null,
+            assignedTo: null,
+            description: null,
           };
         })
         .catch(error => {
@@ -93,10 +94,10 @@ export const useMentorStore = defineStore({
         });
     },
 
-    async deleteMentor(id: number) {
+    async deleteTask(id: number) {
       this.isLoading = true;
       this.validationErrors = null;
-      await MentorService.deleteMentor({ id })
+      await TaskService.deleteTask({ id })
         .then(() => {
           this.isLoading = false;
         })

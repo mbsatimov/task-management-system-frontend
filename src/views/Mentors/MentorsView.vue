@@ -7,12 +7,16 @@ import {
   CarouselPrevious,
   CarouselItem,
 } from '@/components/ui/carousel';
-import { MentorCard } from '@/components/MentorCard';
+import { MentorCard, MentorCardSkeleton } from '@/components/MentorCard';
 import MentorsFilters from './components/MentorsFilters.vue';
+import { useMentorStore } from '@/stores/mentor';
 
-import { mentorsData } from './data';
+const mentorStore = useMentorStore();
 
-const mentors = mentorsData;
+async function getMentors() {
+  await mentorStore.getMentors();
+}
+getMentors();
 </script>
 
 <template>
@@ -26,7 +30,7 @@ const mentors = mentorsData;
     </template>
   </SiteHeader>
   <div class="space-y-8 p-6 md:p-8">
-    <section>
+    <section v-if="mentorStore.isLoading">
       <Carousel>
         <div class="flex items-center justify-between gap-4">
           <h2 class="text-xl font-semibold lg:text-2xl">Recent Mentors</h2>
@@ -38,8 +42,30 @@ const mentors = mentorsData;
         <div class="mt-5">
           <CarouselContent class="lg:-ml-8">
             <CarouselItem
-              class="max-w-[328px] lg:pl-8"
-              v-for="mentor in mentors"
+              class="max-w-[360px] lg:pl-8"
+              v-for="mentor in 6"
+              :key="mentor"
+            >
+              <MentorCardSkeleton />
+            </CarouselItem>
+          </CarouselContent>
+        </div>
+      </Carousel>
+    </section>
+    <section v-else>
+      <Carousel>
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="text-xl font-semibold lg:text-2xl">Recent Mentors</h2>
+          <div class="flex gap-4">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
+        </div>
+        <div class="mt-5">
+          <CarouselContent class="lg:-ml-8">
+            <CarouselItem
+              class="w-full max-w-[360px] lg:pl-8"
+              v-for="mentor in mentorStore.mentors"
               :key="mentor.id"
             >
               <MentorCard :mentor="mentor" />
@@ -48,13 +74,27 @@ const mentors = mentorsData;
         </div>
       </Carousel>
     </section>
-    <section>
+
+    <section v-if="mentorStore.isLoading">
+      <h2 class="text-xl font-semibold lg:text-2xl">Mentors</h2>
+      <div
+        class="mt-4 grid grid-cols-[repeat(auto-fit,_minmax(328px,_1fr))] gap-4 lg:gap-8"
+      >
+        <MentorCardSkeleton
+          v-for="mentor in 10"
+          :key="mentor"
+          :mentor="mentor"
+          :with-about="true"
+        />
+      </div>
+    </section>
+    <section v-else>
       <h2 class="text-xl font-semibold lg:text-2xl">Mentors</h2>
       <div
         class="mt-4 grid grid-cols-[repeat(auto-fit,_minmax(328px,_1fr))] gap-4 lg:gap-8"
       >
         <MentorCard
-          v-for="mentor in mentors"
+          v-for="mentor in mentorStore.mentors"
           :key="mentor.id"
           :mentor="mentor"
           :with-about="true"
