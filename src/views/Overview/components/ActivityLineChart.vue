@@ -8,41 +8,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useStatisticsStore } from '@/stores/statistics';
 
-const data = [
-  {
-    day: 'S',
-    Tasks: 1,
-  },
-  {
-    day: 'M',
-    Tasks: 2,
-  },
-  {
-    day: 'T',
-    Tasks: 3,
-  },
-  {
-    day: 'W',
-    Tasks: 2,
-  },
-  {
-    day: 'T',
-    Tasks: 2,
-  },
-  {
-    day: 'F',
-    Tasks: 1,
-  },
-];
+const statisticsStore = useStatisticsStore();
+
+statisticsStore.getActivities();
 </script>
-
 <template>
   <div class="flex-1 overflow-hidden rounded-md bg-muted p-5">
     <div class="mb-5 flex justify-between">
       <h3 class="text-base font-semibold">Activity</h3>
       <Select>
-        <SelectTrigger class="h-6 w-fit bg-transparent py-0">
+        <SelectTrigger class="h-6 w-fit bg-transparent px-1 py-1">
           <SelectValue placeholder="This Week" />
         </SelectTrigger>
         <SelectContent>
@@ -54,12 +32,19 @@ const data = [
         </SelectContent>
       </Select>
     </div>
+    <Skeleton
+      v-if="statisticsStore.isLoading"
+      class="h-[130px] w-full bg-white"
+    />
     <LineChart
+      v-else-if="statisticsStore.activities"
       class="h-[130px] rounded-md bg-white"
-      :data="data"
+      :data="statisticsStore.activities"
       index="day"
       :show-legend="false"
-      :categories="['Tasks']"
+      :categories="['completedTasks']"
+      :num-x-ticks="7"
+      :num-y-ticks="2"
     />
   </div>
 </template>

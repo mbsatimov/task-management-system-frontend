@@ -1,35 +1,35 @@
-import { MentorService } from '@/api/requests/mentor';
-import type { Mentor } from '@/types/models/mentor';
-import type { Pagination } from '@/types/models/pagination';
 import { defineStore } from 'pinia';
+import { StatisticsService } from '@/api/requests/statistics';
+import type {
+  StatisticsActivity,
+  StatisticsRunningTask,
+} from '@/types/models/statistics';
 
 type State = {
   isSubmitting: boolean;
   isLoading: boolean;
-  mentors: Mentor[];
-  pagination: Pagination | null;
-  currentMentor: Mentor | null;
+  runningTask: StatisticsRunningTask | null;
+  activities: StatisticsActivity[];
   validationErrors: string[] | null;
 };
 
-export const useMentorStore = defineStore({
-  id: 'mentor',
+export const useStatisticsStore = defineStore({
+  id: 'statistics',
   state: (): State => ({
     isSubmitting: false,
     isLoading: false,
-    mentors: [],
-    pagination: null,
-    currentMentor: null,
+    runningTask: null,
+    activities: [],
     validationErrors: null,
   }),
   getters: {},
   actions: {
-    async getMentors(params?: AxiosRequestConfig) {
+    async getRunningTask(requestConfig?: AxiosRequestConfig) {
       this.isLoading = true;
-      await MentorService.getMentors(params)
+      await StatisticsService.getRunningTask(requestConfig)
         .then(({ data }) => {
           setTimeout(() => {
-            this.mentors = data.data;
+            this.runningTask = data.data;
             this.isLoading = false;
           }, 2000);
         })
@@ -39,12 +39,14 @@ export const useMentorStore = defineStore({
         });
     },
 
-    async getMentor(id: number, requestConfig?: AxiosRequestConfig) {
+    async getActivities(requestConfig?: AxiosRequestConfig) {
       this.isLoading = true;
-      await MentorService.getMentor({ id, config: requestConfig?.config })
+      await StatisticsService.getActivities(requestConfig)
         .then(({ data }) => {
-          this.currentMentor = data.data;
-          this.isLoading = false;
+          setTimeout(() => {
+            this.activities = data.data;
+            this.isLoading = false;
+          }, 2000);
         })
         .catch(error => {
           this.validationErrors = error.response.data.errors;

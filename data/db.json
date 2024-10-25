@@ -1,0 +1,391 @@
+{
+  "mentors": [
+    {
+      "id": 1,
+      "firstName": "Dennis",
+      "lastName": "Nzioki",
+      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+      "tasks": 10,
+      "rating": 4,
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "reviews": 10,
+      "jobTitle": "Programmer"
+    },
+    {
+      "id": 2,
+      "firstName": "Dennis",
+      "lastName": "Nzioki",
+      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+      "tasks": 10,
+      "rating": 4,
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "reviews": 10,
+      "jobTitle": "Programmer"
+    },
+    {
+      "id": 3,
+      "firstName": "Dennis",
+      "lastName": "Nzioki",
+      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+      "tasks": 10,
+      "rating": 4,
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "reviews": 10,
+      "jobTitle": "Programmer"
+    },
+    {
+      "id": 4,
+      "firstName": "Dennis",
+      "lastName": "Nzioki",
+      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+      "tasks": 10,
+      "rating": 4,
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "reviews": 10,
+      "jobTitle": "Programmer"
+    },
+    {
+      "id": 5,
+      "firstName": "Dennis",
+      "lastName": "Nzioki",
+      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+      "tasks": 10,
+      "rating": 4,
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "reviews": 10,
+      "jobTitle": "Programmer"
+    }
+  ],
+  "chats": [
+    {
+      "id": 1,
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "createdAt": "2020-01-01T00:00:00Z",
+      "updatedAt": "2023-12-12",
+      "lastMessage": {
+        "id": 2,
+        "isRead": false,
+        "createdAt": "2020-01-01T00:00:00Z",
+        "text": "This is a message, lorem ipsum dolor sit amet",
+        "image": null,
+        "chatId": 1,
+        "user": {
+          "id": 1,
+          "email": "a@a.com",
+          "firstName": "John",
+          "lastName": "Doe",
+          "avatar": "https://i.pravatar.cc/300?u=a"
+        }
+      },
+      "unreadedMessagesCount": 3
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "Sarah",
+        "lastName": "Lee",
+        "avatar": null
+      },
+      "createdAt": "2020-01-01T00:00:00Z",
+      "updatedAt": "2023-12-12",
+      "lastMessage": {
+        "id": 2,
+        "isRead": false,
+        "createdAt": "2020-01-01T00:00:00Z",
+        "text": "This is a message",
+        "image": null,
+        "chatId": 2,
+        "user": {
+          "id": 1,
+          "email": "a@a.com",
+          "firstName": "John",
+          "lastName": "Doe",
+          "avatar": "https://i.pravatar.cc/300?u=a"
+        }
+      },
+      "unreadedMessagesCount": 0
+    }
+  ],
+  "messages": [
+    {
+      "id": 1212,
+      "isRead": true,
+      "createdAt": "2023-12-12T00:00:00Z",
+      "text": "Whats up?",
+      "image": "https://i.pravatar.cc/300?u=a",
+      "chatId": 1,
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      }
+    },
+    {
+      "id": 1,
+      "isRead": true,
+      "createdAt": "2023-12-12T00:00:00Z",
+      "text": "This is a message",
+      "image": null,
+      "chatId": 1,
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      }
+    },
+    {
+      "id": 2,
+      "isRead": false,
+      "createdAt": "2023-12-13T00:00:00Z",
+      "text": "This is a message, lorem ipsum dolor sit amet",
+      "image": null,
+      "chatId": 1,
+      "user": {
+        "id": 2,
+        "email": "jskdfjdk@a.com",
+        "firstName": "Sarah",
+        "lastName": "Lee",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      }
+    },
+    {
+      "id": 3,
+      "isRead": false,
+      "createdAt": "2023-12-12T00:00:00Z",
+      "text": "This is a message",
+      "image": null,
+      "chatId": 1,
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      }
+    },
+    {
+      "id": 4,
+      "isRead": false,
+      "createdAt": "2023-12-12T00:00:00Z",
+      "text": "This is a message",
+      "image": null,
+      "chatId": 2,
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      }
+    },
+    {
+      "id": 5,
+      "isRead": false,
+      "createdAt": "2023-12-12T00:00:00Z",
+      "text": "This is a message",
+      "image": null,
+      "chatId": 2,
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      }
+    }
+  ],
+  "tasksToday": {
+    "id": 1,
+    "title": "Task 1",
+    "description": "Task 1 description",
+    "progress": 70,
+    "createdAt": "2023-01-01",
+    "video": "/video.mp4",
+    "image": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+    "duration": "1 week",
+    "direction": "Frontend",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ],
+    "assignedTo": [
+      {
+        "id": 1,
+        "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+        "firstName": "Dennis",
+        "lastName": "Nzioki"
+      },
+      {
+        "id": 2,
+        "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+        "firstName": "Dennis",
+        "lastName": "Nzioki"
+      },
+      {
+        "id": 3,
+        "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+        "firstName": "Dennis",
+        "lastName": "Nzioki"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Task 1",
+      "description": "Task 1 description",
+      "progress": 70,
+      "createdAt": "2023-01-01",
+      "video": "/video.mp4",
+      "image": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+      "duration": "1 week",
+      "direction": "Frontend",
+      "details": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      ],
+      "assignedTo": [
+        {
+          "id": 1,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        },
+        {
+          "id": 2,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        },
+        {
+          "id": 3,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Task 1",
+      "description": "Task 1 description",
+      "progress": 70,
+      "createdAt": "2023-01-01",
+      "video": "/video.mp4",
+      "image": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+      "duration": "1 week",
+      "direction": "Frontend",
+      "details": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      ],
+      "assignedTo": [
+        {
+          "id": 1,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        },
+        {
+          "id": 2,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        },
+        {
+          "id": 3,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Task 2",
+      "description": "Task 2 description",
+      "progress": 30,
+      "createdAt": "2023-01-01",
+      "video": "/video.mp4",
+      "image": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+      "duration": "1 week",
+      "direction": "Backend",
+      "details": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      ],
+      "assignedTo": [
+        {
+          "id": 1,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        },
+        {
+          "id": 2,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        },
+        {
+          "id": 3,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Task 2",
+      "description": "Task 2 description",
+      "progress": 30,
+      "createdAt": "2023-01-01",
+      "video": "/video.mp4",
+      "image": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+      "duration": "1 week",
+      "direction": "Backend",
+      "details": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      ],
+      "assignedTo": [
+        {
+          "id": 1,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        },
+        {
+          "id": 2,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        },
+        {
+          "id": 3,
+          "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+          "firstName": "Dennis",
+          "lastName": "Nzioki"
+        }
+      ]
+    }
+  ]
+}

@@ -36,12 +36,12 @@ taskStore.getTask(+route.params.id);
   </SiteHeader>
   <TaskDetailSkeleton v-if="taskStore.isLoading" />
   <div
-    v-else
+    v-else-if="taskStore.currentTask"
     class="grid items-start gap-6 overflow-y-auto p-6 md:gap-8 md:p-8 xl:grid-cols-[auto_372px]"
   >
     <Card>
       <div class="overflow-hidden rounded-md">
-        <VideoPlayer src="/video.mp4" />
+        <VideoPlayer :src="taskStore.currentTask.video" />
       </div>
       <CardHeader class="gap-0 space-y-4">
         <CardTitle class="text-[32px]">{{

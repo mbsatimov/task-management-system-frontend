@@ -3,6 +3,7 @@ import type { Student } from './student';
 export interface Task {
   id: number;
   image: string;
+  video: string;
   title: string;
   direction: string;
   description?: string;

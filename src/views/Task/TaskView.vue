@@ -13,10 +13,7 @@ import { useTaskStore } from '@/stores/task';
 
 const taskStore = useTaskStore();
 
-async function getTasks() {
-  await taskStore.getTasks();
-}
-getTasks();
+taskStore.getTasks();
 </script>
 
 <template>

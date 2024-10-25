@@ -13,10 +13,7 @@ import { useMentorStore } from '@/stores/mentor';
 
 const mentorStore = useMentorStore();
 
-async function getMentors() {
-  await mentorStore.getMentors();
-}
-getMentors();
+mentorStore.getMentors();
 </script>
 
 <template>

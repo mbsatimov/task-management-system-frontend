@@ -1,14 +1,15 @@
 import { TaskService } from '@/api/requests/task';
-import type { Task, TaskRequest } from '@/types/models/task';
+import type { Task } from '@/types/models/task';
 import type { Pagination } from '@/types/models/pagination';
 import { defineStore } from 'pinia';
 
 type State = {
   isSubmitting: boolean;
   isLoading: boolean;
-  tasks: Task[] | null;
+  tasks: Task[];
   pagination: Pagination | null;
-  currentTask: Nullable<Task>;
+  currentTask: Task | null;
+  todayTask: Task | null;
   validationErrors: string[] | null;
 };
 
@@ -17,31 +18,20 @@ export const useTaskStore = defineStore({
   state: (): State => ({
     isSubmitting: false,
     isLoading: false,
-    tasks: null,
+    tasks: [],
     pagination: null,
-    currentTask: {
-      id: null,
-      title: null,
-      progress: null,
-      image: null,
-      details: null,
-      duration: null,
-      createdAt: null,
-      direction: null,
-      assignedTo: null,
-      description: null,
-    },
+    currentTask: null,
+    todayTask: null,
     validationErrors: null,
   }),
   getters: {},
   actions: {
-    async getTasks(params?: AxiosRequestConfig) {
+    async getTasks(requestConfig?: AxiosRequestConfig) {
       this.isLoading = true;
-      await TaskService.getTasks(params)
+      await TaskService.getTasks(requestConfig)
         .then(({ data }) => {
           setTimeout(() => {
             this.tasks = data.data;
-            this.pagination = data.meta;
             this.isLoading = false;
           }, 2000);
         })
@@ -66,44 +56,18 @@ export const useTaskStore = defineStore({
         });
     },
 
-    async postTask(task: TaskRequest, requestConfig?: AxiosRequestConfig) {
-      this.isSubmitting = true;
-      this.validationErrors = null;
-      await TaskService.postTask({
-        data: task,
-        config: requestConfig?.config,
-      })
-        .then(() => {
-          this.isSubmitting = false;
-          this.currentTask = {
-            id: null,
-            title: null,
-            progress: null,
-            image: null,
-            details: null,
-            duration: null,
-            createdAt: null,
-            direction: null,
-            assignedTo: null,
-            description: null,
-          };
-        })
-        .catch(error => {
-          this.isSubmitting = false;
-          this.validationErrors = error.response.data.errors;
-        });
-    },
-
-    async deleteTask(id: number) {
+    async getTodayTask(requestConfig?: AxiosRequestConfig) {
       this.isLoading = true;
-      this.validationErrors = null;
-      await TaskService.deleteTask({ id })
-        .then(() => {
-          this.isLoading = false;
+      await TaskService.getTodayTask(requestConfig)
+        .then(({ data }) => {
+          setTimeout(() => {
+            this.todayTask = data.data;
+            this.isLoading = false;
+          }, 2000);
         })
         .catch(error => {
-          this.isLoading = false;
           this.validationErrors = error.response.data.errors;
+          this.isLoading = false;
         });
     },
   },

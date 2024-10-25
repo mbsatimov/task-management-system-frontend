@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { format, isToday, differenceInMinutes } from 'date-fns';
-import { chats } from '../data';
 import { useRoute } from 'vue-router';
 import { watch } from 'vue';
 import { ref } from 'vue';
@@ -12,17 +11,30 @@ import {
   IconSend2,
 } from '@/components/Icons';
 import { Button } from '@/components/ui/button';
-import { messages } from '../data';
 import { cn } from '@/lib/utils';
-import { onMounted } from 'vue';
+import { useMessageStore } from '@/stores/message';
+import { useChatStore } from '@/stores/chat';
+import ChatDetailsSkeleton from './ChatDetailsSkeleton.vue';
+
+const messageStore = useMessageStore();
+const chatStore = useChatStore();
+
 const route = useRoute();
-const chat = ref(chats.find(chat => String(chat.id) === route.query.chat));
-watch(
-  () => route.query.chat,
-  () => {
-    chat.value = chats.find(chat => String(chat.id) === route.query.chat);
-  }
-);
+
+const getMessages = () => {
+  const chatId = Number(route.query.chat);
+  if (!chatId) return;
+  messageStore.getMessages(chatId);
+};
+
+const getChat = () => {
+  const chatId = Number(route.query.chat);
+  if (!chatId) return;
+  chatStore.getChat(chatId);
+};
+
+getMessages();
+getChat();
 
 const chatWindowRef = ref<HTMLDivElement | null>(null);
 
@@ -32,17 +44,32 @@ function scrollToBottom() {
   }
 }
 
-onMounted(() => {
-  scrollToBottom();
-});
+watch(
+  () => route.query.chat,
+  () => {
+    getMessages();
+    getChat();
+  }
+);
+
+watch(
+  () => messageStore.isLoading,
+  () => {
+    setTimeout(() => {
+      scrollToBottom();
+    }, 0);
+  }
+);
 </script>
 <template>
   <div
-    v-if="chat"
+    v-if="$route.query.chat"
     class="fixed inset-0 z-50 flex flex-1 flex-col bg-[#FAFAFA] md:static"
   >
+    <ChatDetailsSkeleton v-if="chatStore.isLoadingCurrentChat" />
     <header
-      class="flex h-[100px] items-center gap-4 rounded-md bg-white px-6 py-2.5 transition-all md:px-12"
+      v-if="!chatStore.isLoadingCurrentChat && chatStore.currentChat"
+      class="flex h-[100px] items-center gap-4 rounded-md bg-white px-6 py-2.5 md:px-12"
     >
       <Button
         class="md:hidden"
@@ -56,20 +83,24 @@ onMounted(() => {
       </Button>
       <div class="flex flex-1 items-center gap-3 overflow-hidden">
         <img
-          :src="chat.user.avatar ?? '/avatar.png'"
+          :src="chatStore.currentChat.user.avatar ?? '/avatar.png'"
           alt=""
           class="size-12 rounded-full"
         />
         <div class="text-gray-900 text-sm font-medium">
           <h4 class="text-sm font-semibold">
-            {{ chat.user.firstName + ' ' + chat.user.lastName }}
+            {{
+              chatStore.currentChat.user.firstName +
+              ' ' +
+              chatStore.currentChat.user.lastName
+            }}
           </h4>
           <div class="flex items-center gap-2">
             <div
               class="m-[5px] size-2 animate-pulse rounded-full bg-[#25C78B] delay-1000"
             />
             <p class="text-xs">
-              {{ format(chat.lastMessage.createdAt, 'HH:mm') }}
+              {{ format(chatStore.currentChat.lastMessage.createdAt, 'HH:mm') }}
             </p>
           </div>
         </div>
@@ -93,12 +124,13 @@ onMounted(() => {
     </header>
 
     <main
+      v-if="!chatStore.isLoadingCurrentChat && chatStore.currentChat"
       ref="chatWindowRef"
       class="grid flex-1 items-end overflow-y-auto pb-9"
     >
       <div>
         <div
-          v-for="(message, index) in messages"
+          v-for="(message, index) in messageStore.messages"
           :key="message.id"
         >
           <div
@@ -129,12 +161,12 @@ onMounted(() => {
             </div>
             <p
               v-if="
-                messages.length === index + 1 ||
+                messageStore.messages.length === index + 1 ||
                 !(
-                  messages.length > index + 1 &&
+                  messageStore.messages.length > index + 1 &&
                   !differenceInMinutes(
                     message.createdAt,
-                    messages[index + 1].createdAt
+                    messageStore.messages[index + 1].createdAt
                   ) &&
                   message.user.id === 1
                 )
@@ -151,8 +183,8 @@ onMounted(() => {
           </div>
           <div
             v-if="
-              messages.length > index + 1 &&
-              message.createdAt < messages[index + 1].createdAt
+              messageStore.messages.length > index + 1 &&
+              message.createdAt < messageStore.messages[index + 1].createdAt
             "
             class="mx-auto mt-6 w-fit rounded-md bg-secondary px-3 py-2 text-sm font-semibold text-white"
           >
@@ -160,9 +192,9 @@ onMounted(() => {
           </div>
           <div
             v-if="
-              messages.length > index + 1 &&
+              messageStore.messages.length > index + 1 &&
               message.isRead &&
-              !messages[index + 1].isRead
+              !messageStore.messages[index + 1].isRead
             "
             class="my-3 bg-secondary-100 text-center text-xs"
           >

@@ -21,7 +21,8 @@ const { task } = defineProps<{
 
 <template>
   <Card>
-    <CardHeader class="!pb-4">
+    <CardHeader class="gap-0 !pb-4">
+      <slot name="top"></slot>
       <RouterLink :to="`/task/${task.id}`">
         <img
           class="aspect-[5/2] rounded-md object-cover"

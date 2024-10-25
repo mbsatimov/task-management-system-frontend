@@ -9,3 +9,6 @@ export interface Chat {
   lastMessage: Message;
   unreadedMessagesCount: number;
 }
+
+export type ChatResponse = Chat;
+export type ChatsResponse = Chat[];

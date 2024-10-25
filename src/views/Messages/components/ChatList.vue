@@ -1,17 +1,22 @@
 <script setup lang="ts">
 import { format } from 'date-fns';
 import { ref } from 'vue';
-import { IconSearch } from '@/components/Icons';
+import { IconProfile, IconSearch } from '@/components/Icons';
 import { Input } from '@/components/ui/input';
 import { IconDoneAll } from '@/components/Icons';
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
-import { chats } from '../data.ts';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useChatStore } from '@/stores/chat';
+
+const chatStore = useChatStore();
+
+chatStore.getChats();
 
 const input = ref('');
 </script>
 <template>
-  <div class="w-full border-x bg-white p-6 md:max-w-[400px]">
+  <div class="w-full overflow-y-auto border-x bg-white p-6 md:max-w-[400px]">
     <div class="relative">
       <Input
         class="w-full placeholder:text-secondary-300"
@@ -22,11 +27,38 @@ const input = ref('');
         class="text-gray-400 absolute right-7 top-1/2 -translate-y-1/2"
       />
     </div>
-    <ul class="mt-8">
+    <ul
+      v-if="chatStore.isLoadingChats"
+      class="mt-8"
+    >
       <li
-        v-for="chat in chats"
+        v-for="chat in 10"
+        :key="chat"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="flex size-12 items-center justify-center rounded-full border border-secondary-300"
+          >
+            <IconProfile class="text-secondary-300" />
+          </div>
+          <div class="space-y-2">
+            <Skeleton class="h-3 w-[100px]" />
+            <Skeleton
+              class="h-3 w-[100px]"
+              variant="secondary"
+            />
+          </div>
+        </div>
+        <Separator class="my-4 border-0" />
+      </li>
+    </ul>
+    <ul
+      v-else
+      class="mt-8"
+    >
+      <li
+        v-for="chat in chatStore.chats"
         :key="chat.id"
-        class="divide-y-2"
       >
         <RouterLink :to="`/messages?chat=${chat.id}`">
           <div

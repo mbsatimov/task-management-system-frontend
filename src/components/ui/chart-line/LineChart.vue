@@ -23,6 +23,8 @@ const props = withDefaults(
        * Type of curve
        */
       curveType?: CurveType;
+      numXTicks?: number;
+      numYTicks?: number;
     }
   >(),
   {
@@ -75,7 +77,7 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
     />
 
     <VisXYContainer
-      :margin="{ left: 20, right: 20 }"
+      :margin="{ left: 16, top: 16, right: 16, bottom: 16 }"
       :data="data"
       :style="{ height: isMounted ? '100%' : 'auto' }"
     >
@@ -112,14 +114,14 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
         type="x"
         :tick-format="xFormatter ?? ((v: number) => data[v]?.[index])"
         :grid-line="showGridLine"
-        :tick-line="false"
         :domain-line="false"
         tick-text-color="hsl(var(--vis-text-color))"
+        :num-ticks="numXTicks"
       />
       <VisAxis
         v-if="showYAxis"
         type="y"
-        :num-ticks="3"
+        :num-ticks="numYTicks"
         :tick-line="false"
         :tick-format="yFormatter"
         :grid-line="false"

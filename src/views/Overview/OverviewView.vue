@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { SiteHeader } from '@/components/SiteHeader';
+import { IconMore } from '@/components/Icons';
 import {
   Carousel,
   CarouselContent,
@@ -7,15 +8,26 @@ import {
   CarouselPrevious,
   CarouselItem,
 } from '@/components/ui/carousel';
-import { MentorCard } from '@/components/MentorCard';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { MentorCard, MentorCardSkeleton } from '@/components/MentorCard';
 import ActivityLineChart from './components/ActivityLineChart.vue';
 import WeeklyCalendarCard from './components/WeeklyCalendarCard.vue';
 import RunningTaskCard from './components/RunningTaskCard.vue';
-import { mentorsData, tasksData } from './data';
-import { TaskCard } from '@/components/TaskCard';
+import { TaskCard, TaskCardSkeleton } from '@/components/TaskCard';
+import { useTaskStore } from '@/stores/task';
+import { useMentorStore } from '@/stores/mentor';
 
-const mentors = mentorsData;
-const tasks = tasksData;
+const mentorStore = useMentorStore();
+const taskStore = useTaskStore();
+
+mentorStore.getMentors();
+taskStore.getTasks();
+taskStore.getTodayTask();
 </script>
 
 <template>
@@ -36,7 +48,25 @@ const tasks = tasksData;
           <ActivityLineChart />
         </div>
 
-        <section>
+        <section v-if="mentorStore.isLoading">
+          <Carousel>
+            <div class="flex items-center justify-between gap-4">
+              <h2 class="text-xl font-semibold lg:text-2xl">Recent Mentors</h2>
+              <div class="flex gap-4">
+                <CarouselPrevious />
+                <CarouselNext />
+              </div>
+            </div>
+            <div class="mt-5">
+              <CarouselContent class="lg:-ml-8">
+                <CarouselItem class="max-w-[360px] lg:pl-8" v-for="mentor in 6" :key="mentor">
+                  <MentorCardSkeleton />
+                </CarouselItem>
+              </CarouselContent>
+            </div>
+          </Carousel>
+        </section>
+        <section v-else>
           <Carousel>
             <div class="flex items-center justify-between gap-4">
               <h2 class="text-xl font-semibold lg:text-2xl">Monthly Mentors</h2>
@@ -46,12 +76,8 @@ const tasks = tasksData;
               </div>
             </div>
             <div class="mt-5">
-              <CarouselContent>
-                <CarouselItem
-                  class="md:basis-1/2"
-                  v-for="mentor in mentors"
-                  :key="mentor.id"
-                >
+              <CarouselContent class="lg:-ml-8">
+                <CarouselItem class="max-w-[360px] lg:pl-8" v-for="mentor in mentorStore.mentors" :key="mentor.id">
                   <MentorCard :mentor="mentor" />
                 </CarouselItem>
               </CarouselContent>
@@ -59,7 +85,25 @@ const tasks = tasksData;
           </Carousel>
         </section>
 
-        <section>
+        <section v-if="taskStore.isLoading">
+          <Carousel>
+            <div class="flex items-center justify-between gap-4">
+              <h2 class="text-xl font-semibold lg:text-2xl">Time Limit</h2>
+              <div class="flex gap-4">
+                <CarouselPrevious />
+                <CarouselNext />
+              </div>
+            </div>
+            <div class="mt-5">
+              <CarouselContent class="lg:-ml-8">
+                <CarouselItem class="max-w-[360px] lg:pl-8" v-for="task in 6" :key="task">
+                  <TaskCardSkeleton />
+                </CarouselItem>
+              </CarouselContent>
+            </div>
+          </Carousel>
+        </section>
+        <section v-else>
           <Carousel>
             <div class="flex items-center justify-between gap-4">
               <h2 class="text-xl font-semibold lg:text-2xl">Upcoming Task</h2>
@@ -69,12 +113,8 @@ const tasks = tasksData;
               </div>
             </div>
             <div class="mt-5">
-              <CarouselContent>
-                <CarouselItem
-                  class="md:basis-1/2"
-                  v-for="task in tasks"
-                  :key="task.id"
-                >
+              <CarouselContent class="lg:-ml-8">
+                <CarouselItem class="max-w-[360px] lg:pl-8" v-for="task in taskStore.tasks" :key="task.id">
                   <TaskCard :task="task" />
                 </CarouselItem>
               </CarouselContent>
@@ -87,21 +127,25 @@ const tasks = tasksData;
     <div class="sticky top-0 bg-muted 2xl:w-[436px]">
       <div class="space-y-8 p-6 md:p-8">
         <WeeklyCalendarCard />
-        <TaskCard
-          :with-details="true"
-          :task="{
-            id: 1,
-            title: 'Task 1',
-            direction: 'Frontend Developer',
-            progress: 60,
-            duration: '2h 30m',
-            image:
-              'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80',
-            createdAt: '2022-01-01',
-            assignedTo: [],
-            details: ['Task 1', 'Task 2', 'Task 3'],
-          }"
-        />
+        <TaskCardSkeleton v-if="taskStore.isLoading" :with-details="true" />
+        <TaskCard :with-details="true" v-else-if="taskStore.todayTask" :task="taskStore.todayTask">
+          <template #top>
+            <div class="flex mb-5 items-center justify-between">
+              <h2 class="text-xl font-semibold">Task Today</h2>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <IconMore />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>Billing</DropdownMenuItem>
+                  <DropdownMenuItem>Team</DropdownMenuItem>
+                  <DropdownMenuItem>Subscription</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </template>
+        </TaskCard>
       </div>
     </div>
   </div>

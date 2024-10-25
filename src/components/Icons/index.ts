@@ -10,6 +10,7 @@ export { default as IconFolderOpen } from './IconFolderOpen.vue';
 export { default as IconMaximize3 } from './IconMaximize3.vue';
 export { default as IconMenu } from './IconMenu.vue';
 export { default as IconMessage } from './IconMessage.vue';
+export { default as IconMore } from './IconMore.vue';
 export { default as IconNote2 } from './IconNote2.vue';
 export { default as IconNotification } from './IconNotification.vue';
 export { default as IconPause } from './IconPause.vue';
