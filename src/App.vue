@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 import { SiteSidebar } from '@/components/SiteSidebar';
+import { Toaster } from '@/components/ui/sonner';
 </script>
 
 <template>
@@ -9,5 +10,6 @@ import { SiteSidebar } from '@/components/SiteSidebar';
     <main class="overflow-y-auto bg-[#FAFAFA] lg:flex-1">
       <RouterView />
     </main>
+    <Toaster />
   </div>
 </template>

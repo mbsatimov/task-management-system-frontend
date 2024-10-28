@@ -21,6 +21,6 @@ export const routes = [
   },
   {
     path: '/settings',
-    component: () => import('@/views/SettingsView.vue'),
+    component: () => import('@/views/Settings/SettingsView.vue'),
   },
 ];
