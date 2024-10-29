@@ -1,58 +1,63 @@
 import { ChatService } from '@/api/requests/chat';
 import type { Chat } from '@/types/models/chat';
-import type { Pagination } from '@/types/models/pagination';
 import { defineStore } from 'pinia';
 
 type State = {
-  isSubmitting: boolean;
-  isLoadingChats: boolean;
-  isLoadingCurrentChat: boolean;
-  chats: Chat[];
-  pagination: Pagination | null;
-  currentChat: Chat | null;
-  validationErrors: string[] | null;
+  chats: {
+    data: Chat[];
+    isLoading: boolean;
+    errors: string[] | null;
+  };
+  currentChat: {
+    data: Chat | null;
+    isLoading: boolean;
+    errors: string[] | null;
+  };
 };
 
 export const useChatStore = defineStore({
   id: 'chat',
   state: (): State => ({
-    isSubmitting: false,
-    isLoadingChats: false,
-    isLoadingCurrentChat: false,
-    chats: [],
-    pagination: null,
-    currentChat: null,
-    validationErrors: null,
+    chats: {
+      data: [],
+      isLoading: false,
+      errors: null,
+    },
+    currentChat: {
+      data: null,
+      isLoading: false,
+      errors: null,
+    },
   }),
   getters: {},
   actions: {
     async getChats(requestConfig?: AxiosRequestConfig) {
-      this.isLoadingChats = true;
-      await ChatService.getChats(requestConfig)
+      this.chats.isLoading = true;
+      await ChatService.getChats({ config: requestConfig?.config })
         .then(({ data }) => {
           setTimeout(() => {
-            this.chats = data.data;
-            this.isLoadingChats = false;
+            this.chats.data = data.data;
+            this.chats.isLoading = false;
           }, 2000);
         })
         .catch(error => {
-          this.validationErrors = error.response.data.errors;
-          this.isLoadingChats = false;
+          this.chats.errors = error.response.data.errors;
+          this.chats.isLoading = false;
         });
     },
 
     async getChat(id: number, requestConfig?: AxiosRequestConfig) {
-      this.isLoadingCurrentChat = true;
+      this.currentChat.isLoading = true;
       await ChatService.getChat({ id, config: requestConfig?.config })
         .then(({ data }) => {
           setTimeout(() => {
-            this.currentChat = data.data;
-            this.isLoadingCurrentChat = false;
+            this.currentChat.data = data.data;
+            this.currentChat.isLoading = false;
           }, 2000);
         })
         .catch(error => {
-          this.validationErrors = error.response.data.errors;
-          this.isLoadingCurrentChat = false;
+          this.currentChat.errors = error.response.data.errors;
+          this.currentChat.isLoading = false;
         });
     },
   },

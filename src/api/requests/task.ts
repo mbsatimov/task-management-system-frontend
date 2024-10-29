@@ -2,9 +2,21 @@ import type { TaskResponse, TasksResponse } from '@/types/models/task';
 import { $api } from '../instance';
 
 export const TaskService = {
-  getTasks: async (requestConfig?: AxiosRequestConfig) => ({
-    success: true,
+  getUpcomingTasks: async (requestConfig?: AxiosRequestConfig) => ({
     errors: [],
+    success: true,
+    data: await $api.get<TasksResponse>('tasks', requestConfig?.config),
+  }),
+
+  getTimeLimitedTasks: async (requestConfig?: AxiosRequestConfig) => ({
+    errors: [],
+    success: true,
+    data: await $api.get<TasksResponse>('tasks', requestConfig?.config),
+  }),
+
+  getNewTasks: async (requestConfig?: AxiosRequestConfig) => ({
+    errors: [],
+    success: true,
     data: await $api.get<TasksResponse>('tasks', requestConfig?.config),
   }),
 

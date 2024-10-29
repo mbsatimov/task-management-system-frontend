@@ -103,12 +103,12 @@ const onSubmit = form.handleSubmit(values => {
         <FormLabel>Timezone</FormLabel>
         <FormControl>
           <RadioGroup
-            class="grid grid-cols-2 gap-4 md:gap-8"
+            class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4 md:gap-8"
             v-bind="componentField"
           >
             <FormItem class="space-y-0">
               <FormLabel
-                class="flex w-full cursor-pointer justify-between rounded-md border border-primary px-5 py-4 font-normal"
+                class="flex w-full cursor-pointer items-center justify-between rounded-md border border-primary px-5 py-4 font-normal"
               >
                 24 Hours
                 <FormControl>
@@ -118,7 +118,7 @@ const onSubmit = form.handleSubmit(values => {
             </FormItem>
             <FormItem class="space-y-0">
               <FormLabel
-                class="flex w-full cursor-pointer justify-between rounded-md border border-primary px-5 py-4 font-normal"
+                class="flex w-full cursor-pointer items-center justify-between rounded-md border border-primary px-5 py-4 font-normal"
               >
                 12 Hours
                 <FormControl>

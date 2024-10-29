@@ -13,13 +13,17 @@ import { useTaskStore } from '@/stores/task';
 
 const taskStore = useTaskStore();
 
-taskStore.getTasks();
+const timeLimitedTasks = taskStore.timeLimitedTasks;
+const newTasks = taskStore.newTasks;
+
+taskStore.getTimeLimitedTasks();
+taskStore.getNewTasks();
 </script>
 
 <template>
   <SiteHeader class="bg-background">
     <template #title>
-      <h1 class="text-2xl font-semibold">Explore Task</h1>
+      <h1 class="text-2xl font-semibold">Time Limit</h1>
     </template>
 
     <template #actions>
@@ -27,7 +31,7 @@ taskStore.getTasks();
     </template>
   </SiteHeader>
   <div class="space-y-8 p-6 md:p-8">
-    <section v-if="taskStore.isLoading">
+    <section v-if="timeLimitedTasks.isLoading">
       <Carousel>
         <div class="flex items-center justify-between gap-4">
           <h2 class="text-xl font-semibold lg:text-2xl">Time Limit</h2>
@@ -62,7 +66,7 @@ taskStore.getTasks();
           <CarouselContent>
             <CarouselItem
               class="max-w-[360px]"
-              v-for="task in taskStore.tasks"
+              v-for="task in timeLimitedTasks.data"
               :key="task.id"
             >
               <TaskCard :task="task" />
@@ -72,7 +76,7 @@ taskStore.getTasks();
       </Carousel>
     </section>
 
-    <section v-if="taskStore.isLoading">
+    <section v-if="newTasks.isLoading">
       <Carousel>
         <div class="flex items-center justify-between gap-4">
           <h2 class="text-xl font-semibold lg:text-2xl">New Task</h2>
@@ -107,7 +111,7 @@ taskStore.getTasks();
           <CarouselContent>
             <CarouselItem
               class="max-w-[360px]"
-              v-for="task in taskStore.tasks"
+              v-for="task in newTasks.data"
               :key="task.id"
             >
               <TaskCard :task="task" />

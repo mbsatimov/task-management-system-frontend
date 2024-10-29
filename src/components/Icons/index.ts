@@ -21,6 +21,7 @@ export { default as IconProfile2 } from './IconProfile2.vue';
 export { default as IconScreenMirroring } from './IconScreenMirroring.vue';
 export { default as IconSearch } from './IconSearch.vue';
 export { default as IconSend2 } from './IconSend2.vue';
+export { default as IconSetting4 } from './IconSetting4.vue';
 export { default as IconSettings } from './IconSettings.vue';
 export { default as IconSort } from './IconSort.vue';
 export { default as IconStar1 } from './IconStar1.vue';

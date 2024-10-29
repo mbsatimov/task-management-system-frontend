@@ -13,6 +13,10 @@ import { useMentorStore } from '@/stores/mentor';
 
 const mentorStore = useMentorStore();
 
+const resentMentors = mentorStore.resentMentors;
+const mentors = mentorStore.mentors;
+
+mentorStore.getResentMentors();
 mentorStore.getMentors();
 </script>
 
@@ -27,7 +31,7 @@ mentorStore.getMentors();
     </template>
   </SiteHeader>
   <div class="space-y-8 p-6 md:p-8">
-    <section v-if="mentorStore.isLoading">
+    <section v-if="resentMentors.isLoading">
       <Carousel>
         <div class="flex items-center justify-between gap-4">
           <h2 class="text-xl font-semibold lg:text-2xl">Recent Mentors</h2>
@@ -62,7 +66,7 @@ mentorStore.getMentors();
           <CarouselContent class="lg:-ml-8">
             <CarouselItem
               class="w-full max-w-[360px] lg:pl-8"
-              v-for="mentor in mentorStore.mentors"
+              v-for="mentor in resentMentors.data"
               :key="mentor.id"
             >
               <MentorCard :mentor="mentor" />
@@ -72,7 +76,7 @@ mentorStore.getMentors();
       </Carousel>
     </section>
 
-    <section v-if="mentorStore.isLoading">
+    <section v-if="mentors.isLoading">
       <h2 class="text-xl font-semibold lg:text-2xl">Mentors</h2>
       <div
         class="mt-4 grid grid-cols-[repeat(auto-fit,_minmax(328px,_1fr))] gap-4 lg:gap-8"
@@ -91,7 +95,7 @@ mentorStore.getMentors();
         class="mt-4 grid grid-cols-[repeat(auto-fit,_minmax(328px,_1fr))] gap-4 lg:gap-8"
       >
         <MentorCard
-          v-for="mentor in mentorStore.mentors"
+          v-for="mentor in mentors.data"
           :key="mentor.id"
           :mentor="mentor"
           :with-about="true"

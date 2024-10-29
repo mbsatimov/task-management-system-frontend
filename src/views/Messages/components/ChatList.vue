@@ -11,6 +11,8 @@ import { useChatStore } from '@/stores/chat';
 
 const chatStore = useChatStore();
 
+const chats = chatStore.chats;
+
 chatStore.getChats();
 
 const input = ref('');
@@ -28,7 +30,7 @@ const input = ref('');
       />
     </div>
     <ul
-      v-if="chatStore.isLoadingChats"
+      v-if="chats.isLoading"
       class="mt-8"
     >
       <li
@@ -57,7 +59,7 @@ const input = ref('');
       class="mt-8"
     >
       <li
-        v-for="chat in chatStore.chats"
+        v-for="chat in chats.data"
         :key="chat.id"
       >
         <RouterLink :to="`/messages?chat=${chat.id}`">

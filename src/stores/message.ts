@@ -1,15 +1,14 @@
 import { MessageService } from '@/api/requests/message';
 import type { Message, MessageRequest } from '@/types/models/message';
-import type { Pagination } from '@/types/models/pagination';
 import { defineStore } from 'pinia';
 
 type State = {
   isSubmitting: boolean;
-  isLoading: boolean;
-  messages: Message[];
-  pagination: Pagination | null;
-  currentMessage: Message | null;
-  todayMessage: Message | null;
+  messages: {
+    data: Message[];
+    isLoading: boolean;
+    errors: string[] | null;
+  };
   validationErrors: string[] | null;
 };
 
@@ -17,30 +16,30 @@ export const useMessageStore = defineStore({
   id: 'message',
   state: (): State => ({
     isSubmitting: false,
-    isLoading: false,
-    messages: [],
-    pagination: null,
-    currentMessage: null,
-    todayMessage: null,
+    messages: {
+      data: [],
+      isLoading: false,
+      errors: null,
+    },
     validationErrors: null,
   }),
   getters: {},
   actions: {
     async getMessages(chatId: number, requestConfig?: AxiosRequestConfig) {
-      this.isLoading = true;
+      this.messages.isLoading = true;
       await MessageService.getMessages({
         chatId,
         config: requestConfig?.config,
       })
         .then(({ data }) => {
           setTimeout(() => {
-            this.messages = data.data;
-            this.isLoading = false;
+            this.messages.data = data.data;
+            this.messages.isLoading = false;
           }, 2000);
         })
         .catch(error => {
-          this.validationErrors = error.response.data.errors;
-          this.isLoading = false;
+          this.messages.errors = error.response.data.errors;
+          this.messages.isLoading = false;
         });
     },
 
@@ -50,7 +49,6 @@ export const useMessageStore = defineStore({
       requestConfig?: AxiosRequestConfig
     ) {
       this.isSubmitting = true;
-      this.validationErrors = null;
       await MessageService.postMessage({
         chatId,
         data: message,
@@ -58,7 +56,6 @@ export const useMessageStore = defineStore({
       })
         .then(() => {
           this.isSubmitting = false;
-          this.currentMessage = null;
         })
         .catch(error => {
           this.isSubmitting = false;

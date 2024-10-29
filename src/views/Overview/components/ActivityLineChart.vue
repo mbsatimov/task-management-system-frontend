@@ -13,6 +13,8 @@ import { useStatisticsStore } from '@/stores/statistics';
 
 const statisticsStore = useStatisticsStore();
 
+const activities = statisticsStore.activities;
+
 statisticsStore.getActivities();
 </script>
 <template>
@@ -33,13 +35,13 @@ statisticsStore.getActivities();
       </Select>
     </div>
     <Skeleton
-      v-if="statisticsStore.isLoading"
+      v-if="activities.isLoading"
       class="h-[130px] w-full bg-white"
     />
     <LineChart
-      v-else-if="statisticsStore.activities"
+      v-else-if="activities.data"
       class="h-[130px] rounded-md bg-white"
-      :data="statisticsStore.activities"
+      :data="activities.data"
       index="day"
       :show-legend="false"
       :categories="['completedTasks']"

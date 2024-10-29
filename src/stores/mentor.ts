@@ -1,54 +1,109 @@
 import { MentorService } from '@/api/requests/mentor';
 import type { Mentor } from '@/types/models/mentor';
-import type { Pagination } from '@/types/models/pagination';
 import { defineStore } from 'pinia';
 
 type State = {
-  isSubmitting: boolean;
-  isLoading: boolean;
-  mentors: Mentor[];
-  pagination: Pagination | null;
-  currentMentor: Mentor | null;
-  validationErrors: string[] | null;
+  monthlyMentors: {
+    data: Mentor[];
+    isLoading: boolean;
+    errors: string[] | null;
+  };
+  resentMentors: {
+    data: Mentor[];
+    isLoading: boolean;
+    errors: string[] | null;
+  };
+  mentors: {
+    data: Mentor[];
+    isLoading: boolean;
+    errors: string[] | null;
+  };
+  currentMentor: {
+    data: Mentor | null;
+    isLoading: boolean;
+    errors: string[] | null;
+  };
 };
 
 export const useMentorStore = defineStore({
   id: 'mentor',
   state: (): State => ({
-    isSubmitting: false,
-    isLoading: false,
-    mentors: [],
-    pagination: null,
-    currentMentor: null,
-    validationErrors: null,
+    monthlyMentors: {
+      data: [],
+      isLoading: false,
+      errors: null,
+    },
+    resentMentors: {
+      data: [],
+      isLoading: false,
+      errors: null,
+    },
+    mentors: {
+      data: [],
+      isLoading: false,
+      errors: null,
+    },
+    currentMentor: {
+      data: null,
+      isLoading: false,
+      errors: null,
+    },
   }),
   getters: {},
   actions: {
-    async getMentors(params?: AxiosRequestConfig) {
-      this.isLoading = true;
-      await MentorService.getMentors(params)
+    async getMonthlyMentors(requestConfig?: AxiosRequestConfig) {
+      this.monthlyMentors.isLoading = true;
+      await MentorService.getMonthlyMentors(requestConfig)
         .then(({ data }) => {
           setTimeout(() => {
-            this.mentors = data.data;
-            this.isLoading = false;
+            this.monthlyMentors.data = data.data;
+            this.monthlyMentors.isLoading = false;
           }, 2000);
         })
         .catch(error => {
-          this.validationErrors = error.response.data.errors;
-          this.isLoading = false;
+          this.monthlyMentors.errors = error.response.data.errors;
+          this.monthlyMentors.isLoading = false;
+        });
+    },
+    async getResentMentors(requestConfig?: AxiosRequestConfig) {
+      this.resentMentors.isLoading = true;
+      await MentorService.getResentMentors(requestConfig)
+        .then(({ data }) => {
+          setTimeout(() => {
+            this.resentMentors.data = data.data;
+            this.resentMentors.isLoading = false;
+          }, 2000);
+        })
+        .catch(error => {
+          this.resentMentors.errors = error.response.data.errors;
+          this.resentMentors.isLoading = false;
+        });
+    },
+    async getMentors(requestConfig?: AxiosRequestConfig) {
+      this.mentors.isLoading = true;
+      await MentorService.getMentors(requestConfig)
+        .then(({ data }) => {
+          setTimeout(() => {
+            this.mentors.data = data.data;
+            this.mentors.isLoading = false;
+          }, 2000);
+        })
+        .catch(error => {
+          this.mentors.errors = error.response.data.errors;
+          this.mentors.isLoading = false;
         });
     },
 
     async getMentor(id: number, requestConfig?: AxiosRequestConfig) {
-      this.isLoading = true;
+      this.mentors.isLoading = true;
       await MentorService.getMentor({ id, config: requestConfig?.config })
         .then(({ data }) => {
-          this.currentMentor = data.data;
-          this.isLoading = false;
+          this.currentMentor.data = data.data;
+          this.currentMentor.isLoading = false;
         })
         .catch(error => {
-          this.validationErrors = error.response.data.errors;
-          this.isLoading = false;
+          this.currentMentor.errors = error.response.data.errors;
+          this.currentMentor.isLoading = false;
         });
     },
   },

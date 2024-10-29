@@ -11,7 +11,7 @@ export function useSearchParams() {
 
   // Set or update a query param
   const setParam = (paramName: string, paramValue: string) => {
-    router.push({
+    router.replace({
       query: {
         ...route.query,
         [paramName]: paramValue || undefined,

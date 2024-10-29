@@ -16,10 +16,13 @@ import { useMessageStore } from '@/stores/message';
 import { useChatStore } from '@/stores/chat';
 import ChatDetailsSkeleton from './ChatDetailsSkeleton.vue';
 
+const route = useRoute();
+
 const messageStore = useMessageStore();
 const chatStore = useChatStore();
 
-const route = useRoute();
+const messages = messageStore.messages;
+const chat = chatStore.currentChat;
 
 const getMessages = () => {
   const chatId = Number(route.query.chat);
@@ -53,7 +56,7 @@ watch(
 );
 
 watch(
-  () => messageStore.isLoading,
+  () => messages.isLoading,
   () => {
     setTimeout(() => {
       scrollToBottom();
@@ -66,9 +69,9 @@ watch(
     v-if="$route.query.chat"
     class="fixed inset-0 z-50 flex flex-1 flex-col bg-[#FAFAFA] md:static"
   >
-    <ChatDetailsSkeleton v-if="chatStore.isLoadingCurrentChat" />
+    <ChatDetailsSkeleton v-if="chat.isLoading" />
     <header
-      v-if="!chatStore.isLoadingCurrentChat && chatStore.currentChat"
+      v-if="!chat.isLoading && chat.data"
       class="flex h-[100px] items-center gap-4 rounded-md bg-white px-6 py-2.5 md:px-12"
     >
       <Button
@@ -83,24 +86,20 @@ watch(
       </Button>
       <div class="flex flex-1 items-center gap-3 overflow-hidden">
         <img
-          :src="chatStore.currentChat.user.avatar ?? '/avatar.png'"
+          :src="chat.data.user.avatar ?? '/avatar.png'"
           alt=""
           class="size-12 rounded-full"
         />
         <div class="text-gray-900 text-sm font-medium">
           <h4 class="text-sm font-semibold">
-            {{
-              chatStore.currentChat.user.firstName +
-              ' ' +
-              chatStore.currentChat.user.lastName
-            }}
+            {{ chat.data.user.firstName + ' ' + chat.data.user.lastName }}
           </h4>
           <div class="flex items-center gap-2">
             <div
               class="m-[5px] size-2 animate-pulse rounded-full bg-[#25C78B] delay-1000"
             />
             <p class="text-xs">
-              {{ format(chatStore.currentChat.lastMessage.createdAt, 'HH:mm') }}
+              {{ format(chat.data.lastMessage.createdAt, 'HH:mm') }}
             </p>
           </div>
         </div>
@@ -124,13 +123,13 @@ watch(
     </header>
 
     <main
-      v-if="!chatStore.isLoadingCurrentChat && chatStore.currentChat"
+      v-if="!chat.isLoading && chat.data"
       ref="chatWindowRef"
       class="grid flex-1 items-end overflow-y-auto pb-9"
     >
       <div>
         <div
-          v-for="(message, index) in messageStore.messages"
+          v-for="(message, index) in messages.data"
           :key="message.id"
         >
           <div
@@ -161,12 +160,12 @@ watch(
             </div>
             <p
               v-if="
-                messageStore.messages.length === index + 1 ||
+                messages.data.length === index + 1 ||
                 !(
-                  messageStore.messages.length > index + 1 &&
+                  messages.data.length > index + 1 &&
                   !differenceInMinutes(
                     message.createdAt,
-                    messageStore.messages[index + 1].createdAt
+                    messages.data[index + 1].createdAt
                   ) &&
                   message.user.id === 1
                 )
@@ -183,8 +182,8 @@ watch(
           </div>
           <div
             v-if="
-              messageStore.messages.length > index + 1 &&
-              message.createdAt < messageStore.messages[index + 1].createdAt
+              messages.data.length > index + 1 &&
+              message.createdAt < messages.data[index + 1].createdAt
             "
             class="mx-auto mt-6 w-fit rounded-md bg-secondary px-3 py-2 text-sm font-semibold text-white"
           >
@@ -192,9 +191,9 @@ watch(
           </div>
           <div
             v-if="
-              messageStore.messages.length > index + 1 &&
+              messages.data.length > index + 1 &&
               message.isRead &&
-              !messageStore.messages[index + 1].isRead
+              !messages.data[index + 1].isRead
             "
             class="my-3 bg-secondary-100 text-center text-xs"
           >
