@@ -1,4 +1,38 @@
 {
+  "statisticsActivities": [
+    {
+      "day": "S",
+      "completedTasks": 1
+    },
+    {
+      "day": "M",
+      "completedTasks": 2
+    },
+    {
+      "day": "T",
+      "completedTasks": 3
+    },
+    {
+      "day": "W",
+      "completedTasks": 2
+    },
+    {
+      "day": "T",
+      "completedTasks": 2
+    },
+    {
+      "day": "F",
+      "completedTasks": 1
+    },
+    {
+      "day": "S",
+      "completedTasks": 1
+    }
+  ],
+  "statisticsRunningTask": {
+    "completed": 32,
+    "total": 123
+  },
   "mentors": [
     {
       "id": 1,
@@ -206,7 +240,7 @@
       }
     }
   ],
-  "tasksToday": {
+  "tasksToDay": {
     "id": 1,
     "title": "Task 1",
     "description": "Task 1 description",

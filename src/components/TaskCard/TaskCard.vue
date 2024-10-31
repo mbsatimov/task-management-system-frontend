@@ -25,7 +25,7 @@ const { task } = defineProps<{
       <slot name="top"></slot>
       <RouterLink :to="`/task/${task.id}`">
         <img
-          class="aspect-[5/2] rounded-md object-cover"
+          class="aspect-[5/2] w-full rounded-md object-cover"
           :src="task.image"
           :alt="task.title"
         />

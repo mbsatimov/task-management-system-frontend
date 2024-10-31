@@ -52,6 +52,6 @@ function color(d: unknown, i: number) {
   />
   <VisCrosshair
     :template="template"
-    :color="green"
+    color="green"
   />
 </template>

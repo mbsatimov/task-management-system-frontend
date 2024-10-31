@@ -29,6 +29,6 @@ export const TaskService = {
   getTodayTask: async (requestConfig?: AxiosRequestConfig) => ({
     errors: [],
     success: true,
-    data: await $api.get<TaskResponse>(`tasksToday`, requestConfig?.config),
+    data: await $api.get<TaskResponse>(`tasks/1`, requestConfig?.config),
   }),
 };

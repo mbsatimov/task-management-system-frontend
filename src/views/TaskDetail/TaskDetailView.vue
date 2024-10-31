@@ -25,6 +25,8 @@ const file = ref<File>();
 const route = useRoute();
 const taskStore = useTaskStore();
 
+const currentTask = taskStore.currentTask;
+
 taskStore.getTask(+route.params.id);
 </script>
 
@@ -34,22 +36,20 @@ taskStore.getTask(+route.params.id);
       <h1 class="text-2xl font-semibold">Explore Task</h1>
     </template>
   </SiteHeader>
-  <TaskDetailSkeleton v-if="taskStore.isLoading" />
+  <TaskDetailSkeleton v-if="currentTask.isLoading" />
   <div
-    v-else-if="taskStore.currentTask"
+    v-else-if="currentTask.data"
     class="grid items-start gap-6 overflow-y-auto p-6 md:gap-8 md:p-8 xl:grid-cols-[auto_372px]"
   >
     <Card>
       <div class="overflow-hidden rounded-md">
-        <VideoPlayer :src="taskStore.currentTask.video" />
+        <VideoPlayer :src="currentTask.data.video" />
       </div>
       <CardHeader class="gap-0 space-y-4">
-        <CardTitle class="text-[32px]">{{
-          taskStore.currentTask.title
-        }}</CardTitle>
+        <CardTitle class="text-[32px]">{{ currentTask.data.title }}</CardTitle>
         <div class="flex items-center">
           <p class="text-sm font-medium text-secondary-400">
-            {{ taskStore.currentTask.direction }}
+            {{ currentTask.data.direction }}
           </p>
           <Separator
             orientation="vertical"
@@ -65,13 +65,13 @@ taskStore.getTask(+route.params.id);
           <div class="flex gap-2.5">
             <IconProfile2 class="size-4 text-secondary-400" />
             <p class="text-sm font-medium">
-              {{ taskStore.currentTask.description }}
+              {{ currentTask.data.description }}
             </p>
           </div>
           <div class="flex gap-2.5">
             <IconTimeCircle class="size-4 text-secondary-400" />
             <p class="text-sm font-medium">
-              {{ taskStore.currentTask.duration }}
+              {{ currentTask.data.duration }}
             </p>
           </div>
         </div>
@@ -79,12 +79,12 @@ taskStore.getTask(+route.params.id);
       <CardContent class="space-y-6">
         <h3 class="text-2xl font-semibold">Description</h3>
         <p class="mt-4 text-sm font-normal text-secondary">
-          {{ taskStore.currentTask.description }}
+          {{ currentTask.data.description }}
         </p>
         <h3 class="text-2xl font-semibold">Essence of Assessment</h3>
         <ul class="mt-4 space-y-5 text-sm font-normal text-secondary">
           <li
-            v-for="item in taskStore.currentTask.details"
+            v-for="item in currentTask.data.details"
             :key="item"
             class="flex gap-2.5"
           >
@@ -101,10 +101,10 @@ taskStore.getTask(+route.params.id);
       <CardHeader class="gap-0">
         <p class="text-sm font-semibold">Assigned Assignments</p>
         <CardTitle class="mt-6 text-[32px]">{{
-          taskStore.currentTask.title
+          currentTask.data.title
         }}</CardTitle>
         <p class="mt-3 text-sm font-medium text-secondary-400">
-          {{ taskStore.currentTask.direction }}
+          {{ currentTask.data.direction }}
         </p>
       </CardHeader>
       <CardContent class="space-y-6">
@@ -135,7 +135,7 @@ taskStore.getTask(+route.params.id);
           </ul>
           <p>File submissions</p>
           <FileUploader
-            class="aspect-[2/1]"
+            class="aspect-[2/1] w-full"
             :value="file"
             @value-change="file = $event"
           />

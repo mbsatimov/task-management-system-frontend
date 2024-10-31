@@ -6,9 +6,6 @@ export default [
   {
     name: 'app/files-to-lint',
     files: ['**/*.{ts,mts,tsx,vue}'],
-    rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
-    },
   },
 
   {
@@ -19,4 +16,11 @@ export default [
   ...pluginVue.configs['flat/essential'],
   ...vueTsEslintConfig(),
   skipFormatting,
+  {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      'vue/multi-word-component-names': 'off',
+    },
+  },
 ];
