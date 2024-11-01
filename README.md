@@ -1,39 +1,27 @@
-# .
+# Vue 3 with Vite in Docker
 
-This template should help get you started developing with Vue 3 in Vite.
+This template helps you get started developing with Vue 3 in Vite and allows you to run your application inside a Docker container easily.
 
-## Recommended IDE Setup
+## Running the Application with Docker by pulling from Docker Hub
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+You can easily run this application using Docker. Start the container with the following command:
 
 ```sh
-pnpm install
+docker run -p 3000:3000 mahkambek/task-management-system-frontend
 ```
 
-### Compile and Hot-Reload for Development
+## Or, if you want, you can run Docker locally:
+
+### 1. Clone this repository
 
 ```sh
-pnpm dev
+git clone https://github.com/mbsatimov/task-management-system-frontend
+cd task-management-system-frontend
 ```
 
-### Type-Check, Compile and Minify for Production
+### 2. Build the Docker image
 
 ```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
+docker-compose build
+docker-compose up
 ```

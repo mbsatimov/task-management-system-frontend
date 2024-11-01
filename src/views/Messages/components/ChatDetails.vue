@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { format, isToday, differenceInMinutes } from 'date-fns';
+import {
+  format,
+  isToday,
+  differenceInMinutes,
+  differenceInDays,
+} from 'date-fns';
 import { useRoute } from 'vue-router';
 import { watch } from 'vue';
 import { ref } from 'vue';
@@ -14,7 +19,9 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useMessageStore } from '@/stores/message';
 import { useChatStore } from '@/stores/chat';
+import type { MessageRequest } from '@/types/models/message';
 import ChatDetailsSkeleton from './ChatDetailsSkeleton.vue';
+import { Loader2Icon } from 'lucide-vue-next';
 
 const route = useRoute();
 
@@ -23,6 +30,11 @@ const chatStore = useChatStore();
 
 const messages = messageStore.messages;
 const chat = chatStore.currentChat;
+
+const currentMessage = ref<MessageRequest>({
+  text: '',
+  image: null,
+});
 
 const getMessages = () => {
   const chatId = Number(route.query.chat);
@@ -63,6 +75,22 @@ watch(
     }, 0);
   }
 );
+
+const onImageChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  if (target.files) {
+  }
+};
+
+const onSendMessage = () => {
+  if (!route.query.chat || currentMessage.value.text?.trim() === '') return;
+  messageStore.postMessage(Number(route.query.chat), currentMessage.value);
+  currentMessage.value = {
+    text: '',
+    image: null,
+  };
+  getMessages();
+};
 </script>
 <template>
   <div
@@ -183,7 +211,10 @@ watch(
           <div
             v-if="
               messages.data.length > index + 1 &&
-              message.createdAt < messages.data[index + 1].createdAt
+              differenceInDays(
+                message.createdAt,
+                messages.data[index + 1].createdAt
+              )
             "
             class="mx-auto mt-6 w-fit rounded-md bg-secondary px-3 py-2 text-sm font-semibold text-white"
           >
@@ -203,19 +234,34 @@ watch(
       </div>
     </main>
 
-    <footer class="flex h-[72px] items-center gap-4 px-6">
+    <footer class="flex h-[72px] items-center gap-4 bg-white px-6">
       <input
         class="flex-1 outline-none placeholder:text-secondary-300"
         placeholder="Send your message…"
+        v-model="currentMessage.text"
+        @keydown.enter="onSendMessage"
       />
       <Button
         variant="ghost"
         size="icon"
       >
         <IconAttachCircle />
+        <input
+          type="file"
+          hidden
+          accept="image/*"
+          @change="onImageChange"
+        />
       </Button>
-      <Button size="icon">
-        <IconSend2 />
+      <Button
+        size="icon"
+        @click="onSendMessage"
+      >
+        <Loader2Icon
+          v-if="messageStore.isSubmitting || messages.isLoading"
+          class="animate-spin"
+        />
+        <IconSend2 v-else />
       </Button>
     </footer>
   </div>

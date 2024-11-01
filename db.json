@@ -1,32 +1,57 @@
 {
+  "login": {
+    "user": {
+      "id": 1,
+      "firstName": "Dennis",
+      "lastName": "Nzioki",
+      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
+    },
+    "token": "123456789"
+  },
+  "refresh": {
+    "user": {
+      "id": 1,
+      "firstName": "Dennis",
+      "lastName": "Nzioki",
+      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
+    },
+    "token": "123456789"
+  },
   "statisticsActivities": [
     {
       "day": "S",
-      "completedTasks": 1
+      "completedTasks": 1,
+      "id": "433b"
     },
     {
       "day": "M",
-      "completedTasks": 2
+      "completedTasks": 2,
+      "id": "f105"
     },
     {
       "day": "T",
-      "completedTasks": 3
+      "completedTasks": 3,
+      "id": "216c"
     },
     {
       "day": "W",
-      "completedTasks": 2
+      "completedTasks": 2,
+      "id": "d318"
     },
     {
       "day": "T",
-      "completedTasks": 2
+      "completedTasks": 2,
+      "id": "7ddb"
     },
     {
       "day": "F",
-      "completedTasks": 1
+      "completedTasks": 1,
+      "id": "7d29"
     },
     {
       "day": "S",
-      "completedTasks": 1
+      "completedTasks": 1,
+      "id": "fb0e"
     }
   ],
   "statisticsRunningTask": {
@@ -35,7 +60,7 @@
   },
   "mentors": [
     {
-      "id": 1,
+      "id": "1",
       "firstName": "Dennis",
       "lastName": "Nzioki",
       "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
@@ -46,7 +71,7 @@
       "jobTitle": "Programmer"
     },
     {
-      "id": 2,
+      "id": "2",
       "firstName": "Dennis",
       "lastName": "Nzioki",
       "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
@@ -57,7 +82,7 @@
       "jobTitle": "Programmer"
     },
     {
-      "id": 3,
+      "id": "3",
       "firstName": "Dennis",
       "lastName": "Nzioki",
       "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
@@ -68,7 +93,7 @@
       "jobTitle": "Programmer"
     },
     {
-      "id": 4,
+      "id": "4",
       "firstName": "Dennis",
       "lastName": "Nzioki",
       "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
@@ -79,7 +104,7 @@
       "jobTitle": "Programmer"
     },
     {
-      "id": 5,
+      "id": "5",
       "firstName": "Dennis",
       "lastName": "Nzioki",
       "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
@@ -92,7 +117,7 @@
   ],
   "chats": [
     {
-      "id": 1,
+      "id": "1",
       "user": {
         "id": 1,
         "email": "a@a.com",
@@ -120,7 +145,7 @@
       "unreadedMessagesCount": 3
     },
     {
-      "id": 2,
+      "id": "2",
       "user": {
         "id": 1,
         "email": "a@a.com",
@@ -150,7 +175,7 @@
   ],
   "messages": [
     {
-      "id": 1212,
+      "id": "1212",
       "isRead": true,
       "createdAt": "2023-12-12T00:00:00Z",
       "text": "Whats up?",
@@ -165,7 +190,7 @@
       }
     },
     {
-      "id": 1,
+      "id": "1",
       "isRead": true,
       "createdAt": "2023-12-12T00:00:00Z",
       "text": "This is a message",
@@ -180,7 +205,7 @@
       }
     },
     {
-      "id": 2,
+      "id": "2",
       "isRead": false,
       "createdAt": "2023-12-13T00:00:00Z",
       "text": "This is a message, lorem ipsum dolor sit amet",
@@ -195,7 +220,7 @@
       }
     },
     {
-      "id": 3,
+      "id": "3",
       "isRead": false,
       "createdAt": "2023-12-12T00:00:00Z",
       "text": "This is a message",
@@ -210,7 +235,7 @@
       }
     },
     {
-      "id": 4,
+      "id": "4",
       "isRead": false,
       "createdAt": "2023-12-12T00:00:00Z",
       "text": "This is a message",
@@ -225,7 +250,7 @@
       }
     },
     {
-      "id": 5,
+      "id": "5",
       "isRead": false,
       "createdAt": "2023-12-12T00:00:00Z",
       "text": "This is a message",
@@ -238,6 +263,531 @@
         "lastName": "Doe",
         "avatar": "https://i.pravatar.cc/300?u=a"
       }
+    },
+    {
+      "id": 0.7943477140337676,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:09.021Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.3966857153184129,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:10.508Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.19859463553976298,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:10.666Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.7602603934743926,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:10.824Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.09636383712856178,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:10.969Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.13250250965388977,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:11.120Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.4781901980052322,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:11.365Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.7053043624152864,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:11.935Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.6013869563857679,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:12.093Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.8154145634921133,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:12.216Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.6658321025973587,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:12.344Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.9775722929953632,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:12.613Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.8193906265958757,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:12.765Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.6033014155803038,
+      "chatId": 1,
+      "image": null,
+      "text": "hello",
+      "createdAt": "2024-11-01T20:55:22.488Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.019576880502690575,
+      "chatId": 1,
+      "image": null,
+      "text": "what is your name",
+      "createdAt": "2024-11-01T20:56:18.325Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.4168378663947909,
+      "chatId": 1,
+      "image": null,
+      "text": "what is your ane",
+      "createdAt": "2024-11-01T20:59:16.295Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.831087115871555,
+      "chatId": 1,
+      "image": null,
+      "text": "asdfasdasdf",
+      "createdAt": "2024-11-01T20:59:21.558Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.8861085208900101,
+      "chatId": 1,
+      "image": null,
+      "text": "sdfsdfd",
+      "createdAt": "2024-11-01T21:00:14.051Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.09857515411769202,
+      "chatId": 1,
+      "image": null,
+      "text": "asdfsdf",
+      "createdAt": "2024-11-01T21:00:16.338Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.19760689978049029,
+      "chatId": 1,
+      "image": null,
+      "text": "asdf",
+      "createdAt": "2024-11-01T21:02:37.763Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.4124097862831805,
+      "chatId": 1,
+      "image": null,
+      "text": "asdfasdf",
+      "createdAt": "2024-11-01T21:02:55.216Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.5295507024848589,
+      "chatId": 1,
+      "image": null,
+      "text": "sdfdfsdfsd",
+      "createdAt": "2024-11-01T21:03:01.344Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.14531707220197299,
+      "chatId": 1,
+      "image": null,
+      "text": "dfgfgfgfgfgfgfgfgfgfgfggfgfgfgffg",
+      "createdAt": "2024-11-01T21:03:09.144Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.4144158022268276,
+      "chatId": 2,
+      "image": null,
+      "text": "tyhis is my message",
+      "createdAt": "2024-11-01T21:03:28.774Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.2268693592014145,
+      "chatId": 2,
+      "image": null,
+      "text": "cfgdfgdfgf",
+      "createdAt": "2024-11-01T21:03:34.125Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.5307062289191827,
+      "chatId": 2,
+      "image": null,
+      "text": "hello world",
+      "createdAt": "2024-11-01T21:03:42.237Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.4302095594458296,
+      "chatId": 1,
+      "image": null,
+      "text": "dddddd",
+      "createdAt": "2024-11-01T21:21:10.523Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.95757801774264,
+      "chatId": 1,
+      "image": null,
+      "text": "sdfsdfdf",
+      "createdAt": "2024-11-01T21:37:41.500Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.7578390360514763,
+      "chatId": 2,
+      "image": null,
+      "text": "sdfsdff",
+      "createdAt": "2024-11-01T21:37:50.515Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.6726847256421061,
+      "chatId": 2,
+      "image": null,
+      "text": "sdfsdfdf",
+      "createdAt": "2024-11-01T21:37:57.868Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.016482207734649368,
+      "chatId": 2,
+      "image": null,
+      "text": "asdfasdsdf",
+      "createdAt": "2024-11-01T21:38:40.639Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.0631348805544315,
+      "chatId": 2,
+      "image": null,
+      "text": "asdfdfs",
+      "createdAt": "2024-11-01T21:38:43.824Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.2721967892440289,
+      "chatId": 2,
+      "image": null,
+      "text": "sdfgsdfg",
+      "createdAt": "2024-11-01T21:39:14.140Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.9126957245293169,
+      "chatId": 2,
+      "image": null,
+      "text": "kjhkhkhkjh",
+      "createdAt": "2024-11-01T21:40:24.347Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
+    },
+    {
+      "id": 0.5437116013908628,
+      "chatId": 2,
+      "image": null,
+      "text": "sdfsdf",
+      "createdAt": "2024-11-01T21:41:11.903Z",
+      "user": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "avatar": "https://i.pravatar.cc/300?u=a"
+      },
+      "isRead": false
     }
   ],
   "tasksToDay": {
@@ -278,7 +828,7 @@
   },
   "tasks": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Task 1",
       "description": "Task 1 description",
       "progress": 70,
@@ -314,7 +864,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Task 1",
       "description": "Task 1 description",
       "progress": 70,
@@ -350,7 +900,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Task 2",
       "description": "Task 2 description",
       "progress": 30,
@@ -386,7 +936,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Task 2",
       "description": "Task 2 description",
       "progress": 30,

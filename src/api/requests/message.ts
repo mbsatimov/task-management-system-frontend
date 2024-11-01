@@ -20,7 +20,7 @@ export const MessageService = {
     config,
   }: AxiosRequestConfig<MessageRequest> & { chatId: number }) =>
     $api.post(
-      `/messages?chatId=${chatId}`,
+      '/messages',
       {
         id: Math.random(),
         chatId,
